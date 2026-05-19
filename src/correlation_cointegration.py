@@ -1,14 +1,5 @@
-"""
-Correlation & Cointegration analysis
--------------------------------------
-Legge Book2.csv (Reddito, Dinamico), scarica S&P 500 e Nasdaq 100 da yfinance
-sulle stesse date mensili e confronta i movimenti.
-"""
-
 from __future__ import annotations
-
 from pathlib import Path
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -251,23 +242,4 @@ for a, b in pairs:
     spearman, _ = stats.spearmanr(df[a], df[b])
     kendall, _ = stats.kendalltau(df[a], df[b])
     print(f"{a} ~ {b:<16} {pearson:>11.4f}  {spearman:>11.4f}  {kendall:>11.4f}")
-print()
-
-# ── 8. sintesi ────────────────────────────────────────────────────────────────
-print("=" * 60)
-print("SINTESI")
-print("=" * 60)
-print("• Sharpe: rendimento in eccesso per unita di volatilita totale.")
-print("• Sortino: come Sharpe ma penalizza solo la volatilita negativa.")
-print("• Max Drawdown: peggior perdita da un picco a un minimo.")
-print("• Calmar: CAGR / |Max Drawdown|, misura efficienza vs perdite profonde.")
-print()
-print("• Pearson: correlazione lineare classica.")
-print("• Spearman (ρ): correlazione monotonica, più robusta a outlier.")
-print("• Kendall (τ): basato su concordanza di ranghi, interpretazione probabilistica.")
-print("  Se τ ≈ 0.8, significa che l'80% delle coppie sono concordi.")
-print()
-print("Interpretazione:")
-print("  - Valori alti (> 0.8) in tutti e tre i metodi → correlazione robusta e affidabile.")
-print("  - Discrepanze tra Pearson e (Spearman/Kendall) → possibili outlier o non-linearità.")
 print()
